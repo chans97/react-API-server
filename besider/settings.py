@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-)qpbg&7a^arg6y%(wzn1e*7_n-pdnoovut^p2@+w4ln6$(c8bz'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['summerluna.pythonanywhere.com']
 
@@ -39,9 +39,18 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'game',
+    'corsheaders', # cors
 ]
 
+# front corsheaders
+CORS_ORIGIN_WHITELIST = [
+    "http://localhost:3000",
+    "https://summerluna.pythonanywhere.com",
+]
+CORS_ALLOW_CREDENTIALS = True
+
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware', # cors
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
