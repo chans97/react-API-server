@@ -46,13 +46,8 @@ INSTALLED_APPS = [
     'corsheaders', # cors
 ]
 
-# front corsheaders
-# CORS_ORIGIN_WHITELIST = [
-#     "http://localhost:3000",
-#     "https://summerluna.pythonanywhere.com",
-# ]
-
-CORS_ORIGIN_ALLOW_ALL = True
+# cors
+CORS_ORIGIN_ALLOW_ALL = True # 전부 허용
 CORS_ALLOW_CREDENTIALS = True
 
 MIDDLEWARE = [
