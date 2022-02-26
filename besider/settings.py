@@ -27,9 +27,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = (os.environ.get('DEBUG', 'TRUE') != 'False')
 
-ALLOWED_HOSTS = ['summerluna.pythonanywhere.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -47,10 +47,12 @@ INSTALLED_APPS = [
 ]
 
 # front corsheaders
-CORS_ORIGIN_WHITELIST = [
-    "http://localhost:3000",
-    "https://summerluna.pythonanywhere.com",
-]
+# CORS_ORIGIN_WHITELIST = [
+#     "http://localhost:3000",
+#     "https://summerluna.pythonanywhere.com",
+# ]
+
+CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
 
 MIDDLEWARE = [
