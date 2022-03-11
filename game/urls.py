@@ -1,7 +1,9 @@
 from django.urls import path
 
-from .views import UserByLevelView
+from .views import UserByLevelView, PostListView,ReplViewSet
 
 urlpatterns = [
-    path('level/<int:level>/', UserByLevelView.as_view()),
+    path('<int:id>/', UserByLevelView.as_view()),
+    path('list/', PostListView.as_view()),
+    path('repl/', ReplViewSet.as_view()),
 ]

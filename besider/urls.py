@@ -6,7 +6,7 @@ from game.views import UserViewSet
 
 # Create a router and register our viewsets with it.
 router = DefaultRouter()
-router.register('users', UserViewSet)
+router.register('posts', UserViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),

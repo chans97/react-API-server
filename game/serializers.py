@@ -1,13 +1,31 @@
 from django.core.validators import (MaxLengthValidator, MaxValueValidator,
                                     MinValueValidator)
 from rest_framework import serializers
-from .models import GameUser
+from .models import GameUser,Repl
 
 
-class UserSerializer(serializers.HyperlinkedModelSerializer):
-    name = serializers.CharField(validators=[MaxLengthValidator(6)])
-    level = serializers.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(5)])
+class PostListSerializer(serializers.HyperlinkedModelSerializer):
+    title = serializers.CharField(validators=[MaxLengthValidator(20)])
 
     class Meta:
         model = GameUser
-        fields = ['url', 'id', 'name', 'level']
+        fields = ['id', 'title']
+
+
+
+
+class PostDetailSerializer(serializers.ModelSerializer):
+
+    title = serializers.CharField(validators=[MaxLengthValidator(20)])
+    contents = serializers.CharField(validators=[MaxLengthValidator(1000)])
+    repls = serializers.StringRelatedField(many=True)
+    class Meta:
+        model = GameUser
+        fields = ('id','title', 'contents', 'repls')
+        # fields = ('title', 'contents')
+
+class ReplSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Repl
+        fields = ('id','contents', 'post')
